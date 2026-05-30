@@ -1,0 +1,39 @@
+[administradores]
+login	admin|contrasena	admin123
+[clientes]
+login	juan|contrasena	123|puntos	0|descuentoTorneo	0.0
+login	andres|contrasena	123|puntos	178|descuentoTorneo	0.0
+login	pepe|contrasena	123|puntos	0|descuentoTorneo	0.0
+[meseros]
+login	mesero1|contrasena	123
+[cocineros]
+login	cocinero1|contrasena	123
+[juegosPrestamo]
+id	JP1|nombre	Parques|anio	2020|editor	Editorial|categoria	Categoria|minJugadores	2|maxJugadores	4|dificil	false|menores5	true|menores18	true|disponible	true|vecesPrestado	0|estado	Nuevo
+id	JP2|nombre	domino|anio	2026|editor	dominobreve|categoria	familiar|minJugadores	2|maxJugadores	5|dificil	false|menores5	true|menores18	true|disponible	true|vecesPrestado	0|estado	Nuevo
+[juegosVenta]
+id	JV1|nombre	Uno|anio	2020|editor	Editorial|categoria	Categoria|minJugadores	2|maxJugadores	4|dificil	false|menores5	true|menores18	true|precio	15000.0|stock	19|costo	10500.0
+[menu]
+id	B3|nombre	cafe|precio	2000.0|disponible	true|alcoholica	false|caliente	true
+id	P2|nombre	pastel de pollo|precio	2500.0|disponible	true|alergenos	
+id	B1|nombre	cocacola|precio	3000.0|disponible	true|alcoholica	false|caliente	false
+[mesas]
+id	M1|capacidad	2|ocupada	true|personas	2|jovenes	false|ninos	false|juegosActivos	1|bebidaCaliente	false|juegoAccion	false|ocupante	andres
+id	M2|capacidad	4|ocupada	true|personas	4|jovenes	false|ninos	false|juegosActivos	1|bebidaCaliente	false|juegoAccion	false|ocupante	juan
+id	M3|capacidad	4|ocupada	false|personas	0|jovenes	false|ninos	false|juegosActivos	0|bebidaCaliente	false|juegoAccion	false|ocupante	null
+id	M4|capacidad	6|ocupada	false|personas	0|jovenes	false|ninos	false|juegosActivos	0|bebidaCaliente	false|juegoAccion	false|ocupante	null
+id	M5|capacidad	8|ocupada	false|personas	0|jovenes	false|ninos	false|juegosActivos	0|bebidaCaliente	false|juegoAccion	false|ocupante	null
+[prestamos]
+id	PR1|fechaPrestamo	2026-05-03T19:24:10.469243500|fechaDevolucion	null|explicado	true|juego	JP1|usuario	andres|mesa	M1
+id	PR2|fechaPrestamo	2026-05-03T19:39:31.022998200|fechaDevolucion	null|explicado	false|juego	JP2|usuario	juan|mesa	M2
+[ventas]
+id	V1|fecha	2026-04-17|comprador	andres|subtotal	15000.0|impuesto	2850.0|total	17850.0|puntos	178
+[pedidos]
+id	PED1|fecha	2026-05-03T19:26:20.132697200|mesa	M1|subtotal	0.0|impuesto	0.0|propina	0.0|total	0.0|estado	PREPARADO
+[turnos]
+idTurno	T1777854338836|inicio	2026-05-03T19:25:38.882108|fin	2026-05-04T03:25:38.882108|dia	LUNES|empleado	mesero1
+[sugerencias]
+[solicitudes]
+[torneos]
+id	TA1|tipo	AMISTOSO|capacidad	4|idJuego	JP1|dia	MONDAY|valor	0.1|cuposFanaticos	1|cuposRegulares	3|inscritosFanaticos	|inscritosRegulares	|empleadosInscritos	
+id	TC2|tipo	COMPETITIVO|capacidad	4|idJuego	JP2|dia	TUESDAY|valor	10000.0|cuposFanaticos	1|cuposRegulares	3|inscritosFanaticos	|inscritosRegulares	|empleadosInscritos	
