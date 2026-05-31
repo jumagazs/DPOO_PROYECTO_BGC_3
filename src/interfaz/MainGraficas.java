@@ -1,5 +1,5 @@
 package interfaz;
-
+// graficas xd
 import modelo.Cafe;
 import modelo.GestorPersistencia;
 
