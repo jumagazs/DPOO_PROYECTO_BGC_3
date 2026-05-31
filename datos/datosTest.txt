@@ -1,6 +1,7 @@
 [administradores]
 login	admin|contrasena	admin123
 [clientes]
+login	0|contrasena	0|puntos	0|descuentoTorneo	0.0
 login	juan|contrasena	123|puntos	0|descuentoTorneo	0.0
 login	andres|contrasena	123|puntos	178|descuentoTorneo	0.0
 login	pepe|contrasena	123|puntos	0|descuentoTorneo	0.0
@@ -37,3 +38,4 @@ idTurno	T1777854338836|inicio	2026-05-03T19:25:38.882108|fin	2026-05-04T03:25:38
 [torneos]
 id	TA1|tipo	AMISTOSO|capacidad	4|idJuego	JP1|dia	MONDAY|valor	0.1|cuposFanaticos	1|cuposRegulares	3|inscritosFanaticos	|inscritosRegulares	|empleadosInscritos	
 id	TC2|tipo	COMPETITIVO|capacidad	4|idJuego	JP2|dia	TUESDAY|valor	10000.0|cuposFanaticos	1|cuposRegulares	3|inscritosFanaticos	|inscritosRegulares	|empleadosInscritos	
+[reservas]

@@ -106,47 +106,37 @@ public class ClienteFrame extends JFrame {
         );
         
         btnReserva.addActionListener(e -> {
-
             try {
-
                 String idMesa = JOptionPane.showInputDialog(
                         this,
                         "ID de la mesa:"
                 );
-
                 int personas = Integer.parseInt(
                         JOptionPane.showInputDialog(
                                 this,
                                 "Cantidad de personas:"
                         )
                 );
-
                 String fechaTexto = JOptionPane.showInputDialog(
                         this,
                         "Fecha y hora (AAAA-MM-DD HH:MM)\nEjemplo: 2026-06-10 18:30"
                 );
-
                 java.time.LocalDateTime fecha =
                         java.time.LocalDateTime.parse(
                                 fechaTexto.replace(" ", "T")
                         );
-
                 cafe.reservarMesa(
                         login,
                         idMesa,
                         personas,
                         fecha
                 );
-
                 gp.guardarTodo(cafe);
-
                 JOptionPane.showMessageDialog(
                         this,
                         "Reserva creada exitosamente"
                 );
-
             } catch (Exception ex) {
-
                 JOptionPane.showMessageDialog(
                         this,
                         ex.getMessage()

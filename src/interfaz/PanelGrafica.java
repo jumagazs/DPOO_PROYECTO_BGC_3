@@ -153,7 +153,6 @@ public class PanelGrafica extends JPanel {
         Map<LocalDate, Double> juegos = new HashMap<>();
         Map<LocalDate, Double> cafeteria = new HashMap<>();
 
-        // Juegos sin impuestos
         for (VentaJuego v : cafe.getVentas()) {
 
             LocalDate fecha =
@@ -168,8 +167,6 @@ public class PanelGrafica extends JPanel {
                     + valorSinImpuestos
             );
         }
-
-        // Cafetería sin impuestos
         for (Pedido p : cafe.getPedidos()) {
 
             LocalDate fecha =
@@ -196,7 +193,6 @@ public class PanelGrafica extends JPanel {
 
         int x = 100;
 
-        // Escala
         double maximo = 1;
 
         for (int i = 4; i >= 0; i--) {
@@ -231,16 +227,12 @@ public class PanelGrafica extends JPanel {
             int altoCafe =
                     (int)((valorCafe / maximo)
                     * alturaMaxima);
-
-            // Juegos
             g2d.setColor(Color.BLUE);
             g2d.fillRect(
                     x,
                     450 - altoJuegos,
                     30,
                     altoJuegos);
-
-            // Cafetería
             g2d.setColor(Color.ORANGE);
             g2d.fillRect(
                     x + 35,
@@ -257,11 +249,7 @@ public class PanelGrafica extends JPanel {
 
             x += 120;
         }
-
-        // Eje X
         g2d.drawLine(80, 450, 720, 450);
-
-        // Leyenda
         g2d.setColor(Color.BLUE);
         g2d.fillRect(50, 520, 20, 20);
 
@@ -281,12 +269,10 @@ public class PanelGrafica extends JPanel {
 
         LocalDate hoy = LocalDate.now();
 
-        // Últimos 7 días
         for (int i = 0; i < 7; i++) {
             reservasPorDia.put(hoy.minusDays(i), 0);
         }
 
-        // Contar reservas
         for (Reserva r : cafe.getReservas()) {
 
             LocalDate fecha = r.getFechaReserva().toLocalDate();
@@ -308,10 +294,8 @@ public class PanelGrafica extends JPanel {
         int origenX = 80;
         int origenY = 450;
 
-        // eje X
         g2d.drawLine(origenX, origenY, 760, origenY);
 
-        // eje Y
         g2d.drawLine(origenX, 100, origenX, origenY);
 
         int maxReservas = 1;
@@ -341,21 +325,13 @@ public class PanelGrafica extends JPanel {
             int y = origenY -
                     (int)(((double) reservas / maxReservas)
                     * alturaMaxima);
-
-            // Punto
             g2d.setColor(Color.BLUE);
             g2d.fillOval(x - 4, y - 4, 8, 8);
-
-            // Línea
             if (xAnterior != -1) {
                 g2d.drawLine(xAnterior, yAnterior, x, y);
             }
-
-            // Valor
             g2d.setColor(Color.BLACK);
             g2d.drawString(String.valueOf(reservas), x - 5, y - 10);
-
-            // Fecha
             g2d.drawString(
                     dia.toString().substring(5),
                     x - 15,
@@ -365,12 +341,9 @@ public class PanelGrafica extends JPanel {
             xAnterior = x;
             yAnterior = y;
         }
-
-        // Leyenda
         g2d.setColor(Color.BLUE);
         g2d.drawLine(100, 520, 140, 520);
         g2d.fillOval(118, 516, 8, 8);
-
         g2d.setColor(Color.BLACK);
         g2d.drawString(
                 "Cantidad de reservas",
