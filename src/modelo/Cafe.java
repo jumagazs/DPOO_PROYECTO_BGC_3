@@ -22,6 +22,7 @@ import java.time.LocalDateTime;
 
 
 public class Cafe {
+	private List<Reserva> reservas;
     private Map<String, Usuario> usuarios;
     private Map<String, JuegoMesaPrestamo> juegosPrestamo;
     private Map<String, ProductoMenu> menu;
@@ -44,6 +45,7 @@ public class Cafe {
     private int capacidadMaximaCafe;
     private List<Torneo> torneos;
     private int consecutivoTorneos;
+    private int consecutivoReservas;
 
     
 
@@ -70,7 +72,12 @@ public class Cafe {
         this.capacidadMaximaCafe = 40;
         this.torneos = new ArrayList<>();
         this.consecutivoTorneos = 1;
+        this.reservas = new ArrayList<>();
+        this.consecutivoReservas = this.reservas.size() + 1;
+        
     }
+    
+    
 
     public Cliente registrarCliente(String login, String contrasena) throws Exception {
         if (usuarios.containsKey(login)) {
@@ -727,7 +734,9 @@ public class Cafe {
 	    this.consecutivoProductos = this.menu.size() + 1;
 	    this.consecutivoSugerencias = this.sugerencias.size() + 1;
 	    this.consecutivoTorneos = this.torneos.size() + 1;
+	    this.consecutivoReservas = this.reservas.size() + 1;
 	    this.consecutivoTurnos = 1;
+	    
 	    for (Usuario u : this.usuarios.values()) {
 	        if (u instanceof Empleado) {
 	            this.consecutivoTurnos += ((Empleado) u).getTurnos().size();
@@ -986,6 +995,38 @@ public class Cafe {
 		    }
 
 		    admin.otorgarPremioAmistoso((TorneoAmistoso) torneo, ganador);
+		}
+		
+		public List<Reserva> getReservas() {
+		    return reservas;
+		}
+		
+		public void reservarMesa(
+		        String loginCliente,
+		        String idMesa,
+		        int personas,
+		        LocalDateTime fecha
+		) throws Exception {
+
+		    Cliente cliente = validarCliente(loginCliente);
+
+		    Mesa mesa = validarMesa(idMesa);
+
+		    if (personas > mesa.getCapacidad()) {
+		        throw new Exception(
+		                "La cantidad de personas supera la capacidad de la mesa."
+		        );
+		    }
+
+		    Reserva reserva = new Reserva(
+		            "R" + consecutivoReservas++,
+		            cliente,
+		            mesa,
+		            fecha,
+		            personas
+		    );
+
+		    reservas.add(reserva);
 		}
     
 }

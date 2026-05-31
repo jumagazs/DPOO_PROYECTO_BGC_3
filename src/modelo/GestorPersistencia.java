@@ -199,6 +199,12 @@ public class GestorPersistencia {
             );
         }
         
+        pw.println("[reservas]");
+
+        for (Reserva r : cafe.getReservas()) {
+            pw.println(r.toString());
+        }
+        
         pw.close();
     }
 
@@ -253,7 +259,43 @@ public class GestorPersistencia {
                         }
                     }
                     cafe.getUsuarios().put(login, mesero);
-                } else if (seccionActual.equals("[cocineros]")) {
+                }
+                else if (seccionActual.equals("[reservas]")) {
+
+                    String idReserva = p[0].split("\t")[1];
+                    String loginCliente = p[1].split("\t")[1];
+                    String idMesa = p[2].split("\t")[1];
+                    LocalDateTime fecha =
+                            LocalDateTime.parse(
+                                    p[3].split("\t")[1]);
+                    int personas =
+                            Integer.parseInt(
+                                    p[4].split("\t")[1]);
+
+                    Cliente cliente =
+                            (Cliente) cafe.getUsuarios().get(loginCliente);
+
+                    Mesa mesa = null;
+
+                    for (Mesa m : cafe.getMesas()) {
+
+                        if (m.getIdMesa().equals(idMesa)) {
+                            mesa = m;
+                            break;
+                        }
+                    }
+
+                    Reserva reserva = new Reserva(
+                            idReserva,
+                            cliente,
+                            mesa,
+                            fecha,
+                            personas
+                    );
+
+                    cafe.getReservas().add(reserva);
+                }
+                else if (seccionActual.equals("[cocineros]")) {
                     String login = p[0].split("\t")[1];
                     String contrasena = p[1].split("\t")[1];
                     cafe.getUsuarios().put(login, new Cocinero(login, contrasena));

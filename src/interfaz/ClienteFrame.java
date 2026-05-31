@@ -21,18 +21,20 @@ public class ClienteFrame extends JFrame {
         setSize(500,400);
         setLocationRelativeTo(null);
 
-        JPanel panel = new JPanel(new GridLayout(6,1));
+        JPanel panel = new JPanel(new GridLayout(7,1));
 
         JButton btnMenu = new JButton("Ver Menu");
         JButton btnMesa = new JButton("Asignar Mesa");
         JButton btnPrestamo = new JButton("Pedir Juego");
         JButton btnCompra = new JButton("Comprar Juego");
+        JButton btnReserva = new JButton("Reservar Mesa");
 
         panel.add(btnMenu);
         panel.add(btnMesa);
         panel.add(btnPrestamo);
         panel.add(btnCompra);
-
+        panel.add(btnReserva);
+        
         add(panel);
         setVisible(true);
 
@@ -85,5 +87,72 @@ public class ClienteFrame extends JFrame {
                 JOptionPane.showMessageDialog(this, ex.getMessage());
             }
         });
+        
+        StringBuilder sb = new StringBuilder();
+
+        for (mesas.Mesa m : cafe.getMesas()) {
+
+            sb.append(m.getIdMesa())
+              .append(" - Capacidad: ")
+              .append(m.getCapacidad())
+              .append("\n");
+        }
+
+        JOptionPane.showMessageDialog(
+                this,
+                sb.toString(),
+                "Mesas disponibles",
+                JOptionPane.INFORMATION_MESSAGE
+        );
+        
+        btnReserva.addActionListener(e -> {
+
+            try {
+
+                String idMesa = JOptionPane.showInputDialog(
+                        this,
+                        "ID de la mesa:"
+                );
+
+                int personas = Integer.parseInt(
+                        JOptionPane.showInputDialog(
+                                this,
+                                "Cantidad de personas:"
+                        )
+                );
+
+                String fechaTexto = JOptionPane.showInputDialog(
+                        this,
+                        "Fecha y hora (AAAA-MM-DD HH:MM)\nEjemplo: 2026-06-10 18:30"
+                );
+
+                java.time.LocalDateTime fecha =
+                        java.time.LocalDateTime.parse(
+                                fechaTexto.replace(" ", "T")
+                        );
+
+                cafe.reservarMesa(
+                        login,
+                        idMesa,
+                        personas,
+                        fecha
+                );
+
+                gp.guardarTodo(cafe);
+
+                JOptionPane.showMessageDialog(
+                        this,
+                        "Reserva creada exitosamente"
+                );
+
+            } catch (Exception ex) {
+
+                JOptionPane.showMessageDialog(
+                        this,
+                        ex.getMessage()
+                );
+            }
+        });
     }
+    
 }
