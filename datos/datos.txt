@@ -12,6 +12,7 @@ id	JP1|nombre	Parques|anio	2020|editor	Editorial|categoria	Categoria|minJugadore
 id	JP2|nombre	domino|anio	2026|editor	dominobreve|categoria	familiar|minJugadores	2|maxJugadores	5|dificil	false|menores5	true|menores18	true|disponible	false|vecesPrestado	0|estado	Nuevo
 [juegosVenta]
 id	JV1|nombre	Uno|anio	2020|editor	Editorial|categoria	Categoria|minJugadores	2|maxJugadores	4|dificil	false|menores5	true|menores18	true|precio	15000.0|stock	19|costo	10500.0
+id	JV2|nombre	Parques|anio	2020|editor	Editorial|categoria	Categoria|minJugadores	2|maxJugadores	4|dificil	false|menores5	true|menores18	true|precio	18000.0|stock	3|costo	12000.0
 [menu]
 id	B3|nombre	cafe|precio	2000.0|disponible	true|alcoholica	false|caliente	true
 id	P2|nombre	pastel de pollo|precio	2500.0|disponible	true|alergenos	

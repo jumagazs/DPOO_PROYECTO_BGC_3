@@ -27,7 +27,7 @@ public class AdminFrame extends JFrame {
         setSize(500,500);
         setLocationRelativeTo(null);
 
-        JPanel panel = new JPanel(new GridLayout(10,1));
+        JPanel panel = new JPanel(new GridLayout(9,1,10,10));
 
         JButton btnBebida = new JButton("Agregar Bebida");
         JButton btnPasteleria = new JButton("Agregar Pasteleria");
@@ -37,6 +37,7 @@ public class AdminFrame extends JFrame {
         JButton btnCocinero = new JButton("Registrar Cocinero");
         JButton btnTurno = new JButton("Asignar Turno");
         JButton btnTorneo = new JButton("Crear Torneo");
+        JButton btnGraficas = new JButton("Ver gráficas");
 
         panel.add(btnBebida);
         panel.add(btnPasteleria);
@@ -46,6 +47,7 @@ public class AdminFrame extends JFrame {
         panel.add(btnCocinero);
         panel.add(btnTurno);
         panel.add(btnTorneo);
+        panel.add(btnGraficas);
 
         add(panel);
         setVisible(true);
@@ -214,6 +216,10 @@ public class AdminFrame extends JFrame {
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage());
             }
+        });
+        
+        btnGraficas.addActionListener(e -> {
+            new GraficasFrame(cafe);
         });
     }
 }
