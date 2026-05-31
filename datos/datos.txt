@@ -1,8 +1,22 @@
 [administradores]
 login	admin|contrasena	admin123
 [clientes]
+login	carlos|contrasena	123|puntos	0|descuentoTorneo	0.0
+login	valeria|contrasena	123|puntos	0|descuentoTorneo	0.0
+login	oswaldo|contrasena	123|puntos	0|descuentoTorneo	0.0
+login	pablo|contrasena	123|puntos	0|descuentoTorneo	0.0
+login	manuel|contrasena	123|puntos	0|descuentoTorneo	0.0
 login	juan|contrasena	123|puntos	0|descuentoTorneo	0.0
 login	andres|contrasena	123|puntos	178|descuentoTorneo	0.0
+login	sebastian|contrasena	123|puntos	0|descuentoTorneo	0.0
+login	fizz|contrasena	123|puntos	0|descuentoTorneo	0.0
+login	andrea|contrasena	123|puntos	0|descuentoTorneo	0.0
+login	jaider|contrasena	123|puntos	0|descuentoTorneo	0.0
+login	andrea maria|contrasena	123|puntos	0|descuentoTorneo	0.0
+login	burbuja|contrasena	123|puntos	0|descuentoTorneo	0.0
+login	diego|contrasena	123|puntos	0|descuentoTorneo	0.0
+login	Lola|contrasena	123|puntos	0|descuentoTorneo	0.0
+login	Majo|contrasena	123|puntos	0|descuentoTorneo	0.0
 [meseros]
 login	mesero1|contrasena	123
 [cocineros]
@@ -36,3 +50,16 @@ idTurno	T1777854338836|inicio	2026-05-03T19:25:38.882108|fin	2026-05-04T03:25:38
 [solicitudes]
 [torneos]
 id	TA1|tipo	AMISTOSO|capacidad	4|idJuego	JP1|dia	MONDAY|valor	0.1|cuposFanaticos	1|cuposRegulares	3|inscritosFanaticos	|inscritosRegulares	|empleadosInscritos	
+[reservas]
+id	R1|cliente	carlos|mesa	M2|fecha	2026-05-30T18:30|personas	2
+id	R2|cliente	oswaldo|mesa	M3|fecha	2026-05-28T18:30|personas	3
+id	R3|cliente	Majo|mesa	M1|fecha	2026-05-29T17:30|personas	2
+id	R4|cliente	andrea|mesa	M1|fecha	2026-05-30T18:30|personas	1
+id	R5|cliente	Fizz|mesa	M4|fecha	2026-05-25T12:30|personas	6
+id	R5|cliente	diego|mesa	M5|fecha	2026-05-25T12:30|personas	3
+id	R5|cliente	burbuja|mesa	M2|fecha	2026-05-27T13:30|personas	4
+id	R5|cliente	Lola|mesa	M5|fecha	2026-05-30T14:00|personas	8
+id	R5|cliente	jaider|mesa	M1|fecha	2026-05-26T12:30|personas	1
+id	R5|cliente	andres|mesa	M3|fecha	2026-05-26T15:25|personas	3
+id	R5|cliente	sebastian|mesa	M2|fecha	2026-05-29T17:30|personas	2
+id	R5|cliente	manuel|mesa	M1|fecha	2026-05-28T12:30|personas	1
