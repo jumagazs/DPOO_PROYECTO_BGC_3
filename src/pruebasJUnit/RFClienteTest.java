@@ -82,7 +82,7 @@ public class RFClienteTest {
 
     @Test
     public void testRF4AsignarMesaMasPequenaDisponible() throws Exception {
-        Mesa mesa = cafe.asignarMesaACliente(cliente, 3, false, false);
+        Mesa mesa = cafe.asignarMesaACliente(this.cliente.getLogin(), 3, false, false);
 
         assertEquals("M2", mesa.getIdMesa());
         assertTrue(mesa.isOcupada());
@@ -91,7 +91,7 @@ public class RFClienteTest {
 
     @Test
     public void testRF5SolicitarPrestamoJuego() throws Exception {
-        Mesa mesa = cafe.asignarMesaACliente(cliente, 3, false, false);
+        Mesa mesa = cafe.asignarMesaACliente(cliente.getLogin(), 3, false, false);
 
         String idJuego = cafe.getJuegosPrestamo().keySet().iterator().next();
 
@@ -105,7 +105,7 @@ public class RFClienteTest {
 
     @Test
     public void testRF6DevolverJuegoPrestado() throws Exception {
-        cafe.asignarMesaACliente(cliente, 3, false, false);
+        cafe.asignarMesaACliente(cliente.getLogin(), 3, false, false);
 
         String idJuego = cafe.getJuegosPrestamo().keySet().iterator().next();
         Prestamo prestamo = cafe.solicitarPrestamoJuegoFlexible("cliente1", idJuego);
@@ -118,7 +118,7 @@ public class RFClienteTest {
 
     @Test
     public void testRF6NoPermiteDobleDevolucion() throws Exception {
-        cafe.asignarMesaACliente(cliente, 3, false, false);
+        cafe.asignarMesaACliente(cliente.getLogin(), 3, false, false);
 
         String idJuego = cafe.getJuegosPrestamo().keySet().iterator().next();
         Prestamo prestamo = cafe.solicitarPrestamoJuegoFlexible("cliente1", idJuego);
@@ -154,7 +154,7 @@ public class RFClienteTest {
         cafe.registrarMesero("admin", "mesero1", "1234");
         cafe.agregarBebida("admin", "Milo", 8500, true, false, true);
 
-        Mesa mesa = cafe.asignarMesaACliente(cliente, 2, false, false);
+        Mesa mesa = cafe.asignarMesaACliente(cliente.getLogin(), 2, false, false);
         Pedido pedido = cafe.registrarPedidoMesero("mesero1", mesa.getIdMesa());
 
         String idProducto = cafe.getMenu().keySet().iterator().next();

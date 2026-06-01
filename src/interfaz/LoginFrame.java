@@ -3,6 +3,7 @@ package interfaz;
 import javax.swing.*;
 import modelo.Cafe;
 import modelo.GestorPersistencia;
+import usuarios.*;
 
 public class LoginFrame extends JFrame {
 
@@ -37,23 +38,21 @@ public class LoginFrame extends JFrame {
         add(panel);
         setVisible(true);
 
-        // LOGIN
         btnLogin.addActionListener(e -> {
             try {
-                String login = txtLogin.getText();
+                String l = txtLogin.getText();
                 String pass = new String(txtPass.getPassword());
-
-                if (!cafe.getUsuarios().containsKey(login)) {
-                    throw new Exception("Usuario no existe");
+                Usuario u = cafe.iniciarSesion(l, pass);
+                if (u instanceof Administrador) {
+                    new AdminFrame(cafe, l, gp);
+                } else if (u instanceof Mesero) {
+                    new MeseroFrame(cafe, l, gp);
+                } else if (u instanceof Cocinero) {
+                    new CocineroFrame(cafe, l, gp);
+                } else if (u instanceof Cliente) {
+                    new ClienteFrame(cafe, l, gp);
                 }
-
-                if (!cafe.getUsuarios().get(login).getContrasena().equals(pass)) {
-                    throw new Exception("Contraseña incorrecta");
-                }
-
-                new ClienteFrame(cafe, login, gp);
                 dispose();
-
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage());
             }
@@ -69,8 +68,6 @@ public class LoginFrame extends JFrame {
                 }
 
                 cafe.registrarCliente(login, pass);
-
-                gp.guardarTodo(cafe);
 
                 JOptionPane.showMessageDialog(this, "Usuario registrado correctamente");
 

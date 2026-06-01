@@ -54,13 +54,8 @@ public class RFAdminTest {
     public void testRFAdmin2GestionarTurnos() throws Exception {
         Empleado mesero = (Empleado) cafe.getUsuarios().get("meseroBase");
 
-        Turno turno = new Turno("T1",
-                LocalDateTime.of(2026, 4, 20, 8, 0),
-                LocalDateTime.of(2026, 4, 20, 16, 0),
-                "DOMINGO",
-                mesero);
 
-        cafe.agregarTurno("admin", "meseroBase", turno);
+        cafe.agregarTurno("admin", "meseroBase", "DOMINGO",LocalDateTime.of(2026, 4, 20, 8, 0),LocalDateTime.of(2026, 4, 20, 16, 0));
 
         assertEquals(1, cafe.consultarTurnoEmpleado("meseroBase").size());
         assertEquals("T1", cafe.consultarTurnoEmpleado("meseroBase").get(0).getIdTurno());
@@ -157,8 +152,7 @@ public class RFAdminTest {
         String idJuegoVenta = cafe.getJuegosVenta().keySet().iterator().next();
         cafe.comprarJuegoConDescuento("cliente1", idJuegoVenta, 1, 0, "");
 
-        Cliente cliente = (Cliente) cafe.getUsuarios().get("cliente1");
-        mesas.Mesa mesa = cafe.asignarMesaACliente(cliente, 2, false, false);
+        mesas.Mesa mesa = cafe.asignarMesaACliente("cliente1", 2, false, false);
 
         Pedido pedido = cafe.registrarPedidoMesero("meseroBase", mesa.getIdMesa());
 
@@ -191,11 +185,7 @@ public class RFAdminTest {
     @Test
     public void testEmpleadoConTurnoNoPuedeInscribirseATorneo() throws Exception {
         Empleado emp = (Empleado) cafe.getUsuarios().get("meseroBase");
-        Turno t = new Turno("TX",
-            LocalDateTime.of(2026, 5, 4, 8, 0),
-            LocalDateTime.of(2026, 5, 4, 16, 0),
-            "LUNES", emp);
-        cafe.agregarTurno("admin", "meseroBase", t);
+        cafe.agregarTurno("admin", "meseroBase", "LUNES",LocalDateTime.of(2026, 5, 4, 8, 0),LocalDateTime.of(2026, 5, 4, 16, 0));
         
         String idJuego = cafe.getJuegosPrestamo().keySet().iterator().next();
         cafe.crearTorneoAmistoso("admin", idJuego, 4, java.time.DayOfWeek.MONDAY, 0.1);

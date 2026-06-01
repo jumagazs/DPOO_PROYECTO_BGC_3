@@ -12,7 +12,7 @@ public class MainGraficas {
             Cafe cafe = new Cafe();
 
             GestorPersistencia gp =
-                    new GestorPersistencia("datos/datos.txt");
+                    new GestorPersistencia("datos/datosGraficas.txt");
 
             gp.cargarTodo(cafe);
 

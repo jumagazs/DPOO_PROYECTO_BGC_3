@@ -18,6 +18,7 @@ import java.util.List;
 import juegos.JuegoMesaVenta;
 
 import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 
@@ -134,8 +135,9 @@ public class Cafe {
         return mesas.values();
     }
 
-    public Mesa asignarMesaACliente(Cliente cliente, int cantidadPersonas, boolean hayJovenes, boolean hayNinos) throws Exception {
-        int personasActuales = 0;
+    public Mesa asignarMesaACliente(String loginCliente, int cantidadPersonas, boolean hayJovenes, boolean hayNinos) throws Exception {
+    		Cliente cliente = validarCliente(loginCliente);	
+    		int personasActuales = 0;
         for (Mesa m : mesas.values()) {
             if (m.isOcupada()) personasActuales += m.getPersonasActuales();
         }
@@ -159,6 +161,8 @@ public class Cafe {
         mejorMesa.asignarMesa(cantidadPersonas,hayJovenes,hayNinos,cliente);
         return mejorMesa;
     }
+    
+
     
     public void liberarMesa(String login) throws Exception {
         Cliente cliente = validarCliente(login);
@@ -580,9 +584,10 @@ public class Cafe {
         this.usuarios.put(login, cocinero);
     }
 
-    public void agregarTurno(String idAdmin, String idEmpleado, Turno turno) throws Exception {
+    public void agregarTurno(String idAdmin, String idEmpleado, String dia,LocalDateTime inicio, LocalDateTime fin) throws Exception {
         Administrador admin = validarAdmin(idAdmin);
         Empleado empleado = validarEmpleado(idEmpleado);
+        Turno turno = new Turno("T" + consecutivoTurnos++, inicio, fin, dia, empleado);
         admin.asignarTurno(empleado, turno);
     }
 
@@ -1028,6 +1033,70 @@ public class Cafe {
 
 		    reservas.add(reserva);
 		}
+		
+	public String getLoginMeseroDisponible() throws Exception {
+	    for (Usuario u : this.usuarios.values()) {
+	        if (u instanceof Mesero) {
+	            return u.getLogin();
+	        }
+	    }
+	    throw new Exception("No hay meseros registrados en el café.");
+	}
+	
+	public int getPuntosCliente(String login) throws Exception {
+	    return validarCliente(login).getPuntosFidelidad();
+	}
+	
+	public double getDescuentoTorneoCliente(String login) throws Exception {
+	    return validarCliente(login).getPorcentajeDescuentoTorneo();
+	}
     
+	public boolean existeJuegoPorNombre(String nombre) {
+	    for (JuegoMesaPrestamo j : juegosPrestamo.values())
+	        if (j.getNombre().equalsIgnoreCase(nombre)) return true;
+	    for (JuegoMesaVenta j : juegosVenta.values())
+	        if (j.getNombre().equalsIgnoreCase(nombre)) return true;
+	    return false;
+	}
+
+	public int[] distribucionCopiasJuego(String nombre) {
+	    int prestamo = 0, venta = 0;
+	    for (JuegoMesaPrestamo j : juegosPrestamo.values())
+	        if (j.getNombre().equalsIgnoreCase(nombre)) prestamo++;
+	    for (JuegoMesaVenta j : juegosVenta.values())
+	        if (j.getNombre().equalsIgnoreCase(nombre)) venta += j.getCantidadStock();
+	    return new int[] { prestamo, venta };
+	}
+
+	public Map<LocalDate, Double> ventasNetasJuegosPorDia(LocalDate inicio, LocalDate fin) {
+	    Map<LocalDate, Double> m = new HashMap<>();
+	    for (VentaJuego v : ventas) {
+	        LocalDate f = LocalDate.parse(v.getFecha().substring(0, 10));
+	        if (!f.isBefore(inicio) && !f.isAfter(fin))
+	            m.put(f, m.getOrDefault(f, 0.0) + (v.getTotal() - v.getImpuesto()));
+	    }
+	    return m;
+	}
+
+	public Map<LocalDate, Double> ventasNetasCafeteriaPorDia(LocalDate inicio, LocalDate fin) {
+	    Map<LocalDate, Double> m = new HashMap<>();
+	    for (Pedido p : pedidos) {
+	        LocalDate f = LocalDate.parse(p.getFecha().substring(0, 10));
+	        if (!f.isBefore(inicio) && !f.isAfter(fin))
+	            m.put(f, m.getOrDefault(f, 0.0) + (p.getTotal() - p.getImpuestoConsumo() - p.getPropina()));
+	    }
+	    return m;
+	}
+
+	public Map<LocalDate, Integer> reservasPorDia(LocalDate inicio, LocalDate fin) {
+	    Map<LocalDate, Integer> m = new HashMap<>();
+	    for (Reserva r : reservas) {
+	        LocalDate f = r.getFechaReserva().toLocalDate();
+	        if (!f.isBefore(inicio) && !f.isAfter(fin))
+	            m.put(f, m.getOrDefault(f, 0) + 1);
+	    }
+	    return m;
+	}
+	
 }
 

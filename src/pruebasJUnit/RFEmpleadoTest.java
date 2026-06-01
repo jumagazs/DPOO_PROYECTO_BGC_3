@@ -57,7 +57,7 @@ public class RFEmpleadoTest {
                 "SABADO",
                 mesero);
 
-        cafe.agregarTurno("admin", "mesero1", turno);
+        cafe.agregarTurno("admin", "mesero1", turno.getDia(),turno.getHoraInicio(),turno.getHoraFin());
 
         assertEquals(1, cafe.consultarTurnoEmpleado("mesero1").size());
         assertEquals("T1", cafe.consultarTurnoEmpleado("mesero1").get(0).getIdTurno());
@@ -73,7 +73,7 @@ public class RFEmpleadoTest {
                 "SABADO",
                 mesero);
 
-        cafe.agregarTurno("admin", "mesero1", turno);
+        cafe.agregarTurno("admin", "mesero1", turno.getDia(),turno.getHoraInicio(),turno.getHoraFin());
 
         assertNotNull(cafe.solicitarCambioTurnoGeneral("mesero1", "T1"));
         assertEquals(1, cafe.getSolicitudesCambioTurno().size());
@@ -134,7 +134,7 @@ public class RFEmpleadoTest {
     @Test
     public void testRF18MeseroRegistraPedidoMesa() throws Exception {
         Cliente cliente = (Cliente) cafe.getUsuarios().get("cliente1");
-        Mesa mesa = cafe.asignarMesaACliente(cliente, 2, false, false);
+        Mesa mesa = cafe.asignarMesaACliente(cliente.getLogin(), 2, false, false);
 
         Pedido pedido = cafe.registrarPedidoMesero("mesero1", mesa.getIdMesa());
 
@@ -145,7 +145,7 @@ public class RFEmpleadoTest {
     @Test
     public void testRF19MeseroGestionaPrestamoCliente() throws Exception {
         Cliente cliente = (Cliente) cafe.getUsuarios().get("cliente1");
-        Mesa mesa = cafe.asignarMesaACliente(cliente, 2, false, false);
+        Mesa mesa = cafe.asignarMesaACliente(cliente.getLogin(), 2, false, false);
 
         String idJuego = null;
         for (JuegoMesaPrestamo j : cafe.getJuegosPrestamo().values()) {
@@ -164,7 +164,7 @@ public class RFEmpleadoTest {
     @Test
     public void testRF20CocineroPreparaPedido() throws Exception {
         Cliente cliente = (Cliente) cafe.getUsuarios().get("cliente1");
-        Mesa mesa = cafe.asignarMesaACliente(cliente, 2, false, false);
+        Mesa mesa = cafe.asignarMesaACliente(cliente.getLogin(), 2, false, false);
 
         Pedido pedido = cafe.registrarPedidoMesero("mesero1", mesa.getIdMesa());
 

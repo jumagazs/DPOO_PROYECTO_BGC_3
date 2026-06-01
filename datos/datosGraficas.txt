@@ -1,0 +1,76 @@
+[administradores]
+login	admin|contrasena	admin123
+[clientes]
+login	carlos|contrasena	123|puntos	0|descuentoTorneo	0.0
+login	valeria|contrasena	123|puntos	0|descuentoTorneo	0.0
+login	oswaldo|contrasena	123|puntos	0|descuentoTorneo	0.0
+login	pablo|contrasena	123|puntos	0|descuentoTorneo	0.0
+login	manuel|contrasena	123|puntos	0|descuentoTorneo	0.0
+login	juan|contrasena	123|puntos	0|descuentoTorneo	0.0
+login	andres|contrasena	123|puntos	178|descuentoTorneo	0.0
+login	sebastian|contrasena	123|puntos	0|descuentoTorneo	0.0
+login	andrea|contrasena	123|puntos	0|descuentoTorneo	0.0
+login	diego|contrasena	123|puntos	0|descuentoTorneo	0.0
+[meseros]
+login	mesero1|contrasena	123
+login	mesero2|contrasena	123
+[cocineros]
+login	cocinero1|contrasena	123
+[juegosPrestamo]
+id	JP7|nombre	Ajedrez|anio	2000|editor	Clasico|categoria	Tablero|minJugadores	2|maxJugadores	2|dificil	false|menores5	false|menores18	true|disponible	true|vecesPrestado	0|estado	Nuevo
+id	JP6|nombre	Catan|anio	2015|editor	Devir|categoria	Tablero|minJugadores	2|maxJugadores	4|dificil	false|menores5	false|menores18	true|disponible	true|vecesPrestado	0|estado	Nuevo
+id	JP8|nombre	Ajedrez|anio	2000|editor	Clasico|categoria	Tablero|minJugadores	2|maxJugadores	2|dificil	false|menores5	false|menores18	true|disponible	true|vecesPrestado	0|estado	Bueno
+id	JP1|nombre	Parques|anio	2020|editor	Editorial|categoria	Tablero|minJugadores	2|maxJugadores	4|dificil	false|menores5	true|menores18	true|disponible	false|vecesPrestado	1|estado	Nuevo
+id	JP3|nombre	Catan|anio	2015|editor	Devir|categoria	Tablero|minJugadores	2|maxJugadores	4|dificil	false|menores5	false|menores18	true|disponible	true|vecesPrestado	0|estado	Nuevo
+id	JP2|nombre	domino|anio	2026|editor	dominobreve|categoria	familiar|minJugadores	2|maxJugadores	5|dificil	false|menores5	true|menores18	true|disponible	false|vecesPrestado	1|estado	Nuevo
+id	JP5|nombre	Catan|anio	2015|editor	Devir|categoria	Tablero|minJugadores	2|maxJugadores	4|dificil	false|menores5	false|menores18	true|disponible	true|vecesPrestado	0|estado	Bueno
+id	JP4|nombre	Catan|anio	2015|editor	Devir|categoria	Tablero|minJugadores	2|maxJugadores	4|dificil	false|menores5	false|menores18	true|disponible	true|vecesPrestado	0|estado	Bueno
+[juegosVenta]
+id	JV1|nombre	Uno|anio	2020|editor	Editorial|categoria	Cartas|minJugadores	2|maxJugadores	4|dificil	false|menores5	true|menores18	true|precio	15000.0|stock	19|costo	10500.0
+id	JV3|nombre	Catan|anio	2015|editor	Devir|categoria	Tablero|minJugadores	2|maxJugadores	4|dificil	false|menores5	false|menores18	true|precio	120000.0|stock	6|costo	80000.0
+id	JV2|nombre	Parques|anio	2020|editor	Editorial|categoria	Tablero|minJugadores	2|maxJugadores	4|dificil	false|menores5	true|menores18	true|precio	18000.0|stock	3|costo	12000.0
+id	JV4|nombre	Ajedrez|anio	2000|editor	Clasico|categoria	Tablero|minJugadores	2|maxJugadores	2|dificil	false|menores5	false|menores18	true|precio	25000.0|stock	2|costo	15000.0
+[menu]
+id	B3|nombre	cafe|precio	2000.0|disponible	true|alcoholica	false|caliente	true
+id	P2|nombre	pastel de pollo|precio	2500.0|disponible	true|alergenos	
+id	B1|nombre	cocacola|precio	3000.0|disponible	true|alcoholica	false|caliente	false
+[mesas]
+id	M1|capacidad	2|ocupada	true|personas	2|jovenes	false|ninos	false|juegosActivos	1|bebidaCaliente	false|juegoAccion	false|ocupante	andres
+id	M2|capacidad	4|ocupada	true|personas	4|jovenes	false|ninos	false|juegosActivos	1|bebidaCaliente	false|juegoAccion	false|ocupante	juan
+id	M3|capacidad	4|ocupada	false|personas	0|jovenes	false|ninos	false|juegosActivos	0|bebidaCaliente	false|juegoAccion	false|ocupante	null
+id	M4|capacidad	6|ocupada	false|personas	0|jovenes	false|ninos	false|juegosActivos	0|bebidaCaliente	false|juegoAccion	false|ocupante	null
+id	M5|capacidad	8|ocupada	false|personas	0|jovenes	false|ninos	false|juegosActivos	0|bebidaCaliente	false|juegoAccion	false|ocupante	null
+[prestamos]
+id	PR1|fechaPrestamo	2026-05-30T19:24:10|fechaDevolucion	null|explicado	true|juego	JP1|usuario	andres|mesa	M1
+id	PR2|fechaPrestamo	2026-05-30T19:39:31|fechaDevolucion	null|explicado	false|juego	JP2|usuario	juan|mesa	M2
+[ventas]
+id	V1|fecha	2026-04-17|comprador	andres|subtotal	15000.0|impuesto	2850.0|total	17850.0|puntos	178
+id	V2|fecha	2026-05-27|comprador	carlos|subtotal	30000.0|impuesto	5700.0|total	35700.0|puntos	300
+id	V3|fecha	2026-05-28|comprador	valeria|subtotal	18000.0|impuesto	3420.0|total	21420.0|puntos	214
+id	V4|fecha	2026-05-30|comprador	juan|subtotal	45000.0|impuesto	8550.0|total	53550.0|puntos	535
+id	V5|fecha	2026-05-31|comprador	andres|subtotal	15000.0|impuesto	2850.0|total	17850.0|puntos	178
+[pedidos]
+id	PED1|fecha	2026-05-03T19:26:20|mesa	M1|subtotal	0.0|impuesto	0.0|propina	0.0|total	0.0|estado	PREPARADO
+id	PED2|fecha	2026-05-27T13:10:00|mesa	M2|subtotal	12000.0|impuesto	960.0|propina	1200.0|total	14160.0|estado	PREPARADO
+id	PED3|fecha	2026-05-28T14:00:00|mesa	M1|subtotal	25000.0|impuesto	2000.0|propina	2500.0|total	29500.0|estado	PREPARADO
+id	PED4|fecha	2026-05-29T12:30:00|mesa	M2|subtotal	8000.0|impuesto	640.0|propina	800.0|total	9440.0|estado	PREPARADO
+id	PED5|fecha	2026-05-30T19:00:00|mesa	M1|subtotal	15000.0|impuesto	1200.0|propina	1500.0|total	17700.0|estado	PREPARADO
+id	PED6|fecha	2026-05-31T20:15:00|mesa	M2|subtotal	30000.0|impuesto	2400.0|propina	3000.0|total	35400.0|estado	PREPARADO
+[turnos]
+idTurno	T1|inicio	2026-05-25T08:00|fin	2026-05-25T16:00|dia	LUNES|empleado	mesero1
+idTurno	T2|inicio	2026-05-26T08:00|fin	2026-05-26T16:00|dia	MARTES|empleado	mesero2
+[sugerencias]
+[solicitudes]
+[torneos]
+id	TA1|tipo	AMISTOSO|capacidad	8|idJuego	JP3|dia	SATURDAY|valor	0.15|cuposFanaticos	2|cuposRegulares	6|inscritosFanaticos	|inscritosRegulares	|empleadosInscritos	
+[reservas]
+id	R1|cliente	carlos|mesa	M4|fecha	2026-05-25T18:00|personas	4
+id	R2|cliente	valeria|mesa	M5|fecha	2026-05-26T19:00|personas	5
+id	R3|cliente	juan|mesa	M2|fecha	2026-05-26T20:00|personas	4
+id	R4|cliente	andres|mesa	M4|fecha	2026-05-28T12:00|personas	3
+id	R5|cliente	sebastian|mesa	M5|fecha	2026-05-28T13:00|personas	6
+id	R6|cliente	andrea|mesa	M2|fecha	2026-05-28T18:30|personas	4
+id	R7|cliente	diego|mesa	M4|fecha	2026-05-29T19:00|personas	2
+id	R8|cliente	carlos|mesa	M5|fecha	2026-05-30T20:00|personas	7
+id	R9|cliente	manuel|mesa	M2|fecha	2026-05-30T13:00|personas	3
+id	R10|cliente	pablo|mesa	M4|fecha	2026-05-31T18:00|personas	5

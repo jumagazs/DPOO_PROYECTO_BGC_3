@@ -195,9 +195,7 @@ public class InterfazConsola {
                 LocalDateTime inicio = LocalDateTime.parse(sc.nextLine());
                 System.out.println("Hora fin (yyyy-MM-ddTHH:mm): ");
                 LocalDateTime fin = LocalDateTime.parse(sc.nextLine());
-                Empleado emp = (Empleado) cafe.getUsuarios().get(idEmpleado);
-                Turno turno = new Turno(idTurno, inicio, fin, dia, emp);
-                cafe.agregarTurno(login, idEmpleado, turno);
+                cafe.agregarTurno(login, idEmpleado, dia,inicio,fin);
                 System.out.println("Turno asignado.");
             } else if (opcion == 6) {
                 System.out.println("ID solicitud: ");
@@ -695,8 +693,7 @@ public class InterfazConsola {
                 boolean jovenes = Boolean.parseBoolean(sc.nextLine());
                 System.out.println("¿Hay niños (<5)? (true/false): ");
                 boolean ninos = Boolean.parseBoolean(sc.nextLine());
-                Cliente c = (Cliente) cafe.getUsuarios().get(login);
-                mesas.Mesa m = cafe.asignarMesaACliente(c, personas, jovenes, ninos);
+                mesas.Mesa m = cafe.asignarMesaACliente(login, personas, jovenes, ninos);
                 System.out.println("Mesa asignada: " + m.getIdMesa());
 
             } else if (opcion == 8) {
